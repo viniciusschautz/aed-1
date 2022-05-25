@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 /* 
 Implementações feitas:
@@ -25,13 +26,16 @@ TODO:
 
 int main(){
     int escolha, escolhaGerente, escolhaCedulas, qntCedulas; //escolhas
-
+    
+    //saque
     int saque, saque_holder;
-
     long long cpf;
-    int d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11;
+    
+    //numero extenso
+    char e1, e2, e3, e4, e5, e6;
 
     int totalSacado = 0; //o valor é acumulativo
+    char valExtenso[80];
 
     //contador de cedulas
     int cedulas450, cedulas250, cedulas50, cedulas20, cedulas10, cedulas5, cedulas2, cedulas1;
@@ -57,6 +61,7 @@ int main(){
 
     int saque450, saque250, saque50, saque20, saque10, saque5, saque2, saque1;
 
+    //o saldo maximo é 172600
     int saldo = cedulas450 * 450 + cedulas250 * 250 + cedulas50 * 50 + cedulas20 * 20 + cedulas10 * 10 + cedulas5 * 5 + cedulas2 * 2 + cedulas1;
 
     do {
@@ -64,6 +69,7 @@ int main(){
         scanf("%d", &escolha);
         switch(escolha){
             case 1: // saque
+                strcpy(valExtenso, ""); //resetar o valor extenso
                 printf(" -> Informe o valor a ser sacado: ");
                 scanf("%d", &saque);
                 printf(" -> Informe seu CPF: ");
@@ -146,14 +152,180 @@ int main(){
                 cedulas5   -= saque5;
                 cedulas2   -= saque2;
                 cedulas1   -= saque1;
-
-                if (saque_holder > 0 ) { //foi possivel retirar o dinheiro
+                if (saque_holder == 0 ) { //foi possivel retirar o dinheiro
                     //converter pra texto
+                    e6 = saque % 10;
+                    e5 = (saque % 100) / 10;
+                    e4 = (saque % 1000) / 100;
+                    e3 = (saque % 10000) / 1000;
+                    e2 = (saque % 100000) / 10000;
+                    e1 = (saque % 1000000) / 100000;
+                    if (e1 == 1 && e2 != 0 && e3 != 0) //primeiro dígito [0] 0 0 0 0 0 só pode ser 0 ou 1
+                        strcat(valExtenso, "cento e ");
+                    else if (e1 == 1 && e2 == 0 && e3 == 0) 
+                        strcat(valExtenso, "cem ");
 
+                    if(e2 != 0) { //segundo dígito 0 [0] 0 0 0 0
+                        if(e2 == 1 && e3 == 0) //onze, doze, etc
+                            strcat(valExtenso, "dez ");
+                        else if(e2 == 1 && e3 == 1) 
+                            strcat(valExtenso, "onze ");
+                        else if(e2 == 1 && e3 == 2) 
+                            strcat(valExtenso, "doze ");
+                        else if(e2 == 1 && e3 == 3) 
+                            strcat(valExtenso, "treze "); 
+                        else if(e2 == 1 && e3 == 4) 
+                            strcat(valExtenso, "quatorze "); 
+                        else if(e2 == 1 && e3 == 5) 
+                            strcat(valExtenso, "quize "); 
+                        else if(e2 == 1 && e3 == 6) 
+                            strcat(valExtenso, "dezesseis "); 
+                        else if(e2 == 1 && e3 == 7) 
+                            strcat(valExtenso, "dezessete "); 
+                        else if(e2 == 1 && e3 == 8) 
+                            strcat(valExtenso, "dezoito "); 
+                        else if(e2 == 1 && e3 == 9) 
+                            strcat(valExtenso, "dezenove "); 
+                        else if (e2 == 2)
+                            strcat(valExtenso, "vinte ");
+                        else if (e2 == 3)
+                            strcat(valExtenso, "trinta ");
+                        else if (e2 == 4)
+                            strcat(valExtenso, "quarenta ");
+                        else if (e2 == 5)
+                            strcat(valExtenso, "cinquenta ");
+                        else if (e2 == 6)
+                            strcat(valExtenso, "sessenta ");
+                        else if (e2 == 7)
+                            strcat(valExtenso, "setenta ");
+                        else if (e2 == 8)
+                            strcat(valExtenso, "oitenta ");
+                        else if (e2 == 9)
+                            strcat(valExtenso, "noventa ");            
+                    }
+                    if(e3 != 0 && e2 != 1) {
+                        if(e2 != 0 || e1 != 0)
+                            strcat(valExtenso, "e ");
+
+                        if(e3 == 1 && (e2 != 0 || e1 != 0)) 
+                            strcat(valExtenso, "um ");
+                        else if(e3 == 2) 
+                            strcat(valExtenso, "dois ");
+                        else if(e3 == 3) 
+                            strcat(valExtenso, "tres "); 
+                        else if(e3 == 4) 
+                            strcat(valExtenso, "quatro "); 
+                        else if(e3 == 5) 
+                            strcat(valExtenso, "cinco "); 
+                        else if(e3 == 6) 
+                            strcat(valExtenso, "seis "); 
+                        else if(e3 == 7) 
+                            strcat(valExtenso, "sete "); 
+                        else if(e3 == 8) 
+                            strcat(valExtenso, "oito "); 
+                        else if(e3 == 9) 
+                            strcat(valExtenso, "nove ");
+                    }
+                    if((e1 != 0 || e2 != 0 || e3 != 0) && (e4 != 0 || e5 != 0 || e6 != 0))
+                        strcat(valExtenso, "mil e ");
+                    else if(e1 != 0 || e2 != 0 || e3 != 0)
+                        strcat(valExtenso, "mil ");
                     
+                    //acabou a casa dos milhares, agora da pra repetir o codigo e mudar as variaveis
+                    if (e4 != 0){
+                        if(e4 == 1 && e5 == 0 && e6 == 0)
+                            strcat(valExtenso, "cem ");
+                        else if(e4 == 1)
+                            strcat(valExtenso, "cento ");
+                        else if(e4 == 2)
+                            strcat(valExtenso, "duzentos ");  
+                        else if(e4 == 3)
+                            strcat(valExtenso, "trezentos ");  
+                        else if(e4 == 4)
+                            strcat(valExtenso, "quatrocentos ");  
+                        else if(e4 == 5)
+                            strcat(valExtenso, "quinhentos ");  
+                        else if(e4 == 6)
+                            strcat(valExtenso, "seiscentos ");  
+                        else if(e4 == 7)
+                            strcat(valExtenso, "setecentos ");
+                        else if(e4 == 8)
+                            strcat(valExtenso, "oitocentos ");
+                        else if(e4 == 9)
+                            strcat(valExtenso, "novecentos ");       
+                    }
+
+                    if(e5 != 0) { //quinto dígito 0 0 0 0 [0] 0
+                        if (e4 != 0)
+                           strcat(valExtenso, "e ");
+  
 
 
-                    printf("[SAIDA] Saque %d:\n%d notas de 450\n%d notas de 250\n%d notas de 50\n%d notas de 20\n%d notas de 10\n%d notas de 5\n%d notas de 2\n%d notas de 1", saque450, saque250, saque50, saque20, saque10, saque5, saque2, saque1);
+                        if(e5 == 1 && e6 == 0) //onze, doze, etc
+                            strcat(valExtenso, "dez");
+                        else if(e5 == 1 && e6 == 1) 
+                            strcat(valExtenso, "onze");
+                        else if(e5 == 1 && e6 == 2) 
+                            strcat(valExtenso, "doze");
+                        else if(e5 == 1 && e6 == 3) 
+                            strcat(valExtenso, "treze"); 
+                        else if(e5 == 1 && e6 == 4) 
+                            strcat(valExtenso, "quatorze"); 
+                        else if(e5 == 1 && e6 == 5) 
+                            strcat(valExtenso, "quize"); 
+                        else if(e5 == 1 && e6 == 6) 
+                            strcat(valExtenso, "dezesseis"); 
+                        else if(e5 == 1 && e6 == 7) 
+                            strcat(valExtenso, "dezessete"); 
+                        else if(e5 == 1 && e6 == 8) 
+                            strcat(valExtenso, "dezoito"); 
+                        else if(e5 == 1 && e6 == 9) 
+                            strcat(valExtenso, "dezenove"); 
+                        else if (e5 == 2)
+                            strcat(valExtenso, "vinte ");
+                        else if (e5 == 3)
+                            strcat(valExtenso, "trinta ");
+                        else if (e5 == 4)
+                            strcat(valExtenso, "quarenta ");
+                        else if (e5 == 5)
+                            strcat(valExtenso, "cinquenta ");
+                        else if (e5 == 6)
+                            strcat(valExtenso, "sessenta ");
+                        else if (e5 == 7)
+                            strcat(valExtenso, "setenta ");
+                        else if (e5 == 8)
+                            strcat(valExtenso, "oitenta ");
+                        else if (e5 == 9)
+                            strcat(valExtenso, "noventa ");             
+                    }
+                    if(e6 != 0 && e5 != 1) {
+                        if(e5 != 0 || e4 != 0)
+                            strcat(valExtenso, "e ");
+
+                        if(e6 == 1) 
+                            strcat(valExtenso, "um");
+                        else if(e6 == 2) 
+                            strcat(valExtenso, "dois");
+                        else if(e6 == 3) 
+                            strcat(valExtenso, "tres"); 
+                        else if(e6 == 4) 
+                            strcat(valExtenso, "quatro"); 
+                        else if(e6 == 5) 
+                            strcat(valExtenso, "cinco"); 
+                        else if(e6 == 6) 
+                            strcat(valExtenso, "seis"); 
+                        else if(e6 == 7) 
+                            strcat(valExtenso, "sete"); 
+                        else if(e6 == 8) 
+                            strcat(valExtenso, "oito"); 
+                        else if(e6 == 9) 
+                            strcat(valExtenso, "nove");  
+                    }
+
+
+
+                    printf("%s\n\n", valExtenso);
+                    printf("[SAIDA] Saque %d:\n%d notas de 450\n%d notas de 250\n%d notas de 50\n%d notas de 20\n%d notas de 10\n%d notas de 5\n%d notas de 2\n%d notas de 1\n", saque, saque450, saque250, saque50, saque20, saque10, saque5, saque2, saque1);
                     saldo -= saque; //o saldo PRECISA ser calculado aqui
                 }
             break;
