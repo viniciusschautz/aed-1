@@ -29,7 +29,8 @@ int main(){
     
     //saque
     int saque, saque_holder;
-    long long cpf;
+    long long int cpf;
+    int c1, d1, u1, c2, d2, u2, c3, d3, u3, dig_1, dig_2, soma_mod, v_dig1, v_dig2, v_cpf;
     
     //numero extenso
     char e1, e2, e3, e4, e5, e6;
@@ -72,14 +73,48 @@ int main(){
                 strcpy(valExtenso, ""); //resetar o valor extenso
                 printf(" -> Informe o valor a ser sacado: ");
                 scanf("%d", &saque);
-                printf(" -> Informe seu CPF: ");
-                scanf("%d", &cpf);
 
                 //TODO: validador de cpf
+                printf(" -> Informe seu CPF: ");
+                scanf("%lld", &cpf);
+                //DECOMPOSICAO DO NUMERO
+                c1 = (cpf/10000000000) % 10;
+                d1 = (cpf/1000000000) % 10;
+                u1 = (cpf/100000000) % 10;
+                c2 = (cpf/10000000) % 10;
+                d2 = (cpf/1000000) % 10;
+                u2 = (cpf/100000) % 10;
+                c3 = (cpf/10000) % 10;
+                d3 = (cpf/1000) % 10;
+                u3 = (cpf/100) % 10;
+                dig_1 = (cpf/10) % 10;
+                dig_2 = cpf % 10;
 
+                //1. DIGITO
+                soma_mod = c1*10 + d1*9 + u1*8 + c2*7 + d2*6 + u2*5 + c3*4 + d3*3 + u3*2;
 
+                v_dig1 = 11 - (soma_mod % 11);
+                if(v_dig1>=10)
+                    v_dig1 = 0;
 
+                //2. DIGITO
+                soma_mod = c1*11 + d1*10 + u1*9 + c2*8 + d2*7 + u2*6 + c3*5 + d3*4 + u3*3 + v_dig1*2;
 
+                v_dig2 = 11 - (soma_mod % 11);
+                if(v_dig2>=10)
+                    v_dig2 = 0;
+
+                //VALIDACAO
+                if((v_dig1!=dig_1)||(v_dig2!=dig_2)){
+                    v_cpf = 1;
+                    printf("\nCPF invalido!\n\n");
+                    break;
+                }
+                else {
+                    v_cpf = 0;
+                    printf("\nCPF valido!\n\n");
+                    //continue
+                }
 
                 if(saque > saldo) {  //impossivel sacar mais dinheiro do que a maquina tem
                     printf("[ERRO!] A maquina nao possui saldo suficiente!\n");
