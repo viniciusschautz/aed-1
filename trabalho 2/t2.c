@@ -61,14 +61,17 @@ int main(){
 
     int saque450, saque250, saque50, saque20, saque10, saque5, saque2, saque1;
 
-    //o saldo maximo é 172600
+    //o saldo maximo é 188600
     int saldo = cedulas450 * 450 + cedulas250 * 250 + cedulas50 * 50 + cedulas20 * 20 + cedulas10 * 10 + cedulas5 * 5 + cedulas2 * 2 + cedulas1;
 
     do {
-        printf("----------Menu----------\n1.Saque\n2.Gerente\n3.Finalizar\n -> Escolha sua opcao: ");
+        system("cls");
+        printf("-------<[ Menu ]>-------\n(1) Saque\n(2) Gerente\n(3) Finalizar\n\n -> Escolha sua opcao: ");
         scanf("%d", &escolha);
         switch(escolha){
             case 1: // saque
+                system("cls");
+                printf("----------Saque----------\n");
                 strcpy(valExtenso, ""); //resetar o valor extenso
                 printf(" -> Informe o valor a ser sacado: ");
                 scanf("%d", &saque);
@@ -327,37 +330,40 @@ int main(){
                     printf("%s\n\n", valExtenso);
                     printf("[SAIDA] Saque %d:\n%d notas de 450\n%d notas de 250\n%d notas de 50\n%d notas de 20\n%d notas de 10\n%d notas de 5\n%d notas de 2\n%d notas de 1\n", saque, saque450, saque250, saque50, saque20, saque10, saque5, saque2, saque1);
                     saldo -= saque; //o saldo PRECISA ser calculado aqui
+                    totalSacado += saque;
                 }
             break;
             case 2: // menu gerente
                 do {
-                    printf("----------Menu gerente:----------\n(1) Valor total sacado\n(2) Valor do saldo existente\n(3) Quantidade de cedulas existentes\n(4) Abastecer o caixa eletronico\n(5) Voltar ao menu principal\n -> Sua escolha: ");
+                    system("cls");
+                    printf("--------<[ Menu gerente ]>--------\n(1) Valor total sacado\n(2) Valor do saldo existente\n(3) Quantidade de cedulas existentes\n(4) Abastecer o caixa eletronico\n(5) Voltar ao menu principal\n\n -> Sua escolha: ");
                     scanf("%d", &escolhaGerente);
                     switch(escolhaGerente){
                         case 1: //valor total sacado
-                            printf("[SAIDA] O valor total sacado nesse caixa eletronico foi de %d reais\n", totalSacado);
+                            printf(" [SAIDA] O valor total sacado nesse caixa eletronico foi de %d reais\n\n", totalSacado);
                         break;
                         case 2: //Valor do saldo existente
                             //não se calcula o saldo aqui, já que o saldo só atualizaria quando se escolhesse essa opção
-                            printf("[SAIDA] Saldo existente: %d\n", saldo);
+                            printf(" [SAIDA] Saldo existente: %d\n\n", saldo);
                         break;
                         case 3: //quantidade de cedulas existentes
-                            printf("[SAIDA] Quantidade de cedulas:\nCedulas de 450: %d\nCedulas de 250: %d\nCedulas de 50: %d\nCedulas de 20: %d\nCedulas de 10: %d\nCedulas de 5: %d\nCedulas de 2: %d\nCedulas de 1: %d\n", cedulas450, cedulas250, cedulas50, cedulas20, cedulas10, cedulas5, cedulas2, cedulas1);
+                            printf(" [SAIDA] Quantidade de cedulas:\nCedulas de 450: %d\nCedulas de 250: %d\nCedulas de 50: %d\nCedulas de 20: %d\nCedulas de 10: %d\nCedulas de 5: %d\nCedulas de 2: %d\nCedulas de 1: %d\n\n", cedulas450, cedulas250, cedulas50, cedulas20, cedulas10, cedulas5, cedulas2, cedulas1);
                         break;
                         case 4: //Abastecer caixa eletronico
                             do {
-                                printf("----------Menu abastecer o caixa eletronico:----------\n(450) Cedulas de 450\n(250) Cedulas de 250\n(50) Cedulas de 50\n(20) Cedulas de 20\n(10) Cedulas de 10\n(5) Cedulas de 5\n(2) Cedulas de 2\n(1) Cedulas de 1\n(0) Voltar para o menu gerente\n -> Sua escolha:");
+                                system("cls");
+                                printf("-------<[ Menu abastecer o caixa eletronico ]>-------\n(450) Cedulas de 450\n(250) Cedulas de 250\n(50) Cedulas de 50\n(20) Cedulas de 20\n(10) Cedulas de 10\n(5) Cedulas de 5\n(2) Cedulas de 2\n(1) Cedulas de 1\n(0) Voltar para o menu gerente\n\n -> Sua escolha: ");
                                 scanf("%d", &escolhaCedulas);
                                 switch(escolhaCedulas){
                                     case 450:
                                         printf(" -> Quantidade de cedulas de %d: ", escolhaCedulas);
                                         scanf("%d", &qntCedulas);
                                         if(limite450 < qntCedulas + cedulas450) {
-                                            printf("[ERRO!] A quantidade (%d) ultrapassa o limite de %d cedulas de %d\n", qntCedulas, limite450, cedulas450);
+                                            printf(" [ERRO!] A quantidade (%d) ultrapassa o limite de %d cedulas de 450 reais!\n", qntCedulas, limite450);
                                             break;
                                         }
                                         if (qntCedulas <= 0) {
-                                            printf("[ERRO!] Impossivel inserir valores negativos ou neutros.\n");
+                                            printf(" [ERRO!] Impossivel inserir valores negativos ou neutros.\n");
                                             break;
                                         }
                                         cedulas450 += qntCedulas;
@@ -366,11 +372,11 @@ int main(){
                                         printf(" -> Quantidade de cedulas de %d: ", escolhaCedulas);
                                         scanf("%d", &qntCedulas);
                                         if(limite250 < qntCedulas + cedulas250) {
-                                            printf("[ERRO!] A quantidade (%d) ultrapassa o limite de %d cedulas de %d\n", qntCedulas, limite250, cedulas250);
+                                            printf(" [ERRO!] A quantidade (%d) ultrapassa o limite de %d cedulas de 250 reais!\n", qntCedulas, limite250);
                                             break;
                                         }
                                         if (qntCedulas <= 0) {
-                                            printf("[ERRO!] Impossivel inserir valores negativos ou neutros.\n");
+                                            printf(" [ERRO!] Impossivel inserir valores negativos ou neutros.\n");
                                             break;
                                         }
                                         cedulas250 += qntCedulas;
@@ -379,11 +385,11 @@ int main(){
                                         printf(" -> Quantidade de cedulas de %d: ", escolhaCedulas);
                                         scanf("%d", &qntCedulas);
                                         if(limite50 < qntCedulas + cedulas50) {
-                                            printf("[ERRO!] A quantidade (%d) ultrapassa o limite de %d cedulas de %d\n", qntCedulas, limite50, cedulas50);
+                                            printf(" [ERRO!] A quantidade (%d) ultrapassa o limite de %d cedulas de 50 reais!\n", qntCedulas, limite50);
                                             break;
                                         }
                                         if (qntCedulas <= 0) {
-                                            printf("[ERRO!] Impossivel inserir valores negativos ou neutros.\n");
+                                            printf(" [ERRO!] Impossivel inserir valores negativos ou neutros.\n");
                                             break;
                                         }
                                         cedulas50 += qntCedulas;
@@ -392,11 +398,11 @@ int main(){
                                         printf(" -> Quantidade de cedulas de %d: ", escolhaCedulas);
                                         scanf("%d", &qntCedulas);
                                         if(limite20 < qntCedulas + cedulas20) {
-                                            printf("[ERRO!] A quantidade (%d) ultrapassa o limite de %d cedulas de %d\n", qntCedulas, limite20, cedulas20);
+                                            printf(" [ERRO!] A quantidade (%d) ultrapassa o limite de %d cedulas de 20 reais!\n", qntCedulas, limite20);
                                             break;
                                         }
                                         if (qntCedulas <= 0) {
-                                            printf("[ERRO!] Impossivel inserir valores negativos ou neutros.\n");
+                                            printf(" [ERRO!] Impossivel inserir valores negativos ou neutros.\n");
                                             break;
                                         }
                                         cedulas20 += qntCedulas;
@@ -405,11 +411,11 @@ int main(){
                                         printf(" -> Quantidade de cedulas de %d: ", escolhaCedulas);
                                         scanf("%d", &qntCedulas);
                                         if(limite10 < qntCedulas + cedulas10) {
-                                            printf("[ERRO!] A quantidade (%d) ultrapassa o limite de %d cedulas de %d\n", qntCedulas, limite10, cedulas10);
+                                            printf(" [ERRO!] A quantidade (%d) ultrapassa o limite de %d cedulas de 10 reais!\n", qntCedulas, limite10);
                                             break;
                                         }
                                         if (qntCedulas <= 0) {
-                                            printf("[ERRO!] Impossivel inserir valores negativos ou neutros.\n");
+                                            printf(" [ERRO!] Impossivel inserir valores negativos ou neutros.\n");
                                             break;
                                         }
                                         cedulas10 += qntCedulas;
@@ -418,11 +424,11 @@ int main(){
                                         printf(" -> Quantidade de cedulas de %d: ", escolhaCedulas);
                                         scanf("%d", &qntCedulas);
                                         if(limite5 < qntCedulas + cedulas5) {
-                                            printf("[ERRO!] A quantidade (%d) ultrapassa o limite de %d cedulas de %d\n", qntCedulas, limite5, cedulas5);
+                                            printf(" [ERRO!] A quantidade (%d) ultrapassa o limite de %d cedulas de 5 reais!\n", qntCedulas, limite5);
                                             break;
                                         }
                                         if (qntCedulas <= 0) {
-                                            printf("[ERRO!] Impossivel inserir valores negativos ou neutros.\n");
+                                            printf(" [ERRO!] Impossivel inserir valores negativos ou neutros.\n");
                                             break;
                                         }
                                         cedulas5 += qntCedulas;
@@ -431,11 +437,11 @@ int main(){
                                         printf(" -> Quantidade de cedulas de %d: ", escolhaCedulas);
                                         scanf("%d", &qntCedulas);
                                         if(limite2 < qntCedulas + cedulas2) {
-                                            printf("[ERRO!] A quantidade (%d) ultrapassa o limite de %d cedulas de %d\n", qntCedulas, limite2, cedulas2);
+                                            printf(" [ERRO!] A quantidade (%d) ultrapassa o limite de %d cedulas de 2 reais!\n", qntCedulas, limite2);
                                             break;
                                         }
                                         if (qntCedulas <= 0) {
-                                            printf("[ERRO!] Impossivel inserir valores negativos ou neutros.\n");
+                                            printf(" [ERRO!] Impossivel inserir valores negativos ou neutros.\n");
                                             break;
                                         }
                                         cedulas2 += qntCedulas;
@@ -444,40 +450,45 @@ int main(){
                                         printf(" -> Quantidade de cedulas de %d: ", escolhaCedulas);
                                         scanf("%d", &qntCedulas);
                                         if(limite1 < qntCedulas + cedulas1) {
-                                            printf("[ERRO!] A quantidade (%d) ultrapassa o limite de %d cedulas de %d\n", qntCedulas, limite1, cedulas1);
+                                            printf(" [ERRO!] A quantidade (%d) ultrapassa o limite de %d cedulas de 1 real!\n", qntCedulas, limite1);
                                             break;
                                         }
                                         if (qntCedulas <= 0) {
-                                            printf("[ERRO!] Impossivel inserir valores negativos ou neutros.\n");
+                                            printf(" [ERRO!] Impossivel inserir valores negativos ou neutros.\n");
                                             break;
                                         }
                                         cedulas1 += qntCedulas;
                                     break;
                                     case 0:
-                                        printf("Retornando ao menu gerente.\n");
+                                        printf("Retornando ao menu gerente...\n\n");
                                     break;
                                     default:
-                                        printf("[ERRO!] Escolha uma opcao valida!\n");
+                                        printf(" [ERRO!] Escolha uma opcao valida!\n");
                                 }
                                 saldo = cedulas450 * 450 + cedulas250 * 250 + cedulas50 * 50 + cedulas20 * 20 + cedulas10 * 10 + cedulas5 * 5 + cedulas2 * 2 + cedulas1;
                                 //atualizar o saldo depois do abastecimento
+                                if(escolhaCedulas != 0)
+                                    system("pause");
                             } while (escolhaCedulas != 0);
                         break;
                         case 5: //sair
-                            printf("Voltando ao menu principal.\n");
+                            printf("Voltando ao menu principal...\n\n");
                         break;
                         default:
-                            printf("[ERRO!] Escolha uma opcao valida!\n");
+                            printf(" [ERRO!] Escolha uma opcao valida!\n\n");
                     }
+                    if(escolhaGerente != 5)
+                        system("pause");
                 } while (escolhaGerente != 5);
 
 
             break;
             case 3:
-                printf("Finalizado\n");
+                printf("Finalizado...\n\n");
             break;
             default:
-                printf("[ERRO!] Escolha um valor valido!\n");
+                printf(" [ERRO!] Escolha um valor valido!\n");
         }
+        system("pause");
     } while (escolha != 3);
 }
