@@ -21,8 +21,9 @@ TODO:
     * checar erros
     * checar verificador de cpf
     * escolha de saída no saque
-    * inverter cxpf e saque
+    * inverter cpf e saque
     * tirar os 0 das notas fornecidas
+    * nao pode sacar 0 ou negativos
 
 */
 
