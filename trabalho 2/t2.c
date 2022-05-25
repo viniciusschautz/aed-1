@@ -24,12 +24,16 @@ TODO:
 
 
 int main(){
+
+    char me1[25], me2[25], me3[25], cente[25], deze[25], une[20]; //Numeros por extenso
+    int m1, m2, m3, cent, dez, un;
+    
     int escolha, escolhaGerente, escolhaCedulas, qntCedulas; //escolhas
 
     int saque, saque_holder;
 
-    long long cpf;
-    int d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11;
+    long long int cpf;
+    int c1, d1, u1, c2, d2, u2, c3, d3, u3, dig_1, dig_2, soma_mod, v_dig1, v_dig2, v_cpf;
 
     int totalSacado = 0; //o valor é acumulativo
 
@@ -66,14 +70,49 @@ int main(){
             case 1: // saque
                 printf(" -> Informe o valor a ser sacado: ");
                 scanf("%d", &saque);
-                printf(" -> Informe seu CPF: ");
-                scanf("%d", &cpf);
 
                 //TODO: validador de cpf
+                do{
+                    printf("Digite seu CPF (Cadastro de Pessoas Fisicas): ");
+                    scanf("%lld", &cpf);
+                    //DECOMPOSICAO DO NUMERO
+                    c1 = (cpf/10000000000) % 10;
+                    d1 = (cpf/1000000000) % 10;
+                    u1 = (cpf/100000000) % 10;
+                    c2 = (cpf/10000000) % 10;
+                    d2 = (cpf/1000000) % 10;
+                    u2 = (cpf/100000) % 10;
+                    c3 = (cpf/10000) % 10;
+                    d3 = (cpf/1000) % 10;
+                    u3 = (cpf/100) % 10;
+                    dig_1 = (cpf/10) % 10;
+                    dig_2 = cpf % 10;
 
+                    //1. DIGITO
+                    soma_mod = c1*10 + d1*9 + u1*8 + c2*7 + d2*6 + u2*5 + c3*4 + d3*3 + u3*2;
 
+                    v_dig1 = 11 - (soma_mod % 11);
+                    if(v_dig1>=10)
+                        v_dig1 = 0;
 
+                    //2. DIGITO
+                    soma_mod = c1*11 + d1*10 + u1*9 + c2*8 + d2*7 + u2*6 + c3*5 + d3*4 + u3*3 + v_dig1*2;
 
+                    v_dig2 = 11 - (soma_mod % 11);
+                    if(v_dig2>=10)
+                        v_dig2 = 0;
+
+                    //VALIDACAO
+                    if((v_dig1!=dig_1)||(v_dig2!=dig_2)){
+                        v_cpf = 1;
+                        printf("\nCPF invalido!\n\n");
+                    }
+                    else {
+                        v_cpf = 0;
+                        printf("\nCPF valido!\n");
+                        //continue
+                    }
+                } while ((v_cpf == 1));
 
                 if(saque > saldo) {  //impossivel sacar mais dinheiro do que a maquina tem
                     printf("[ERRO!] A maquina nao possui saldo suficiente!\n");
@@ -150,6 +189,130 @@ int main(){
                 if (saque_holder > 0 ) { //foi possivel retirar o dinheiro
                     //converter pra texto
 
+                    //Para a casa m1
+                    if(m1==1&&(m2>0||m3>0)) {
+                        strcpy(me1, "Cento e");
+                    }
+                    else if(m1==1) {
+                        strcpy(me1, "Cem mil");
+                    }
+
+                    //Para a casa m2
+                    if(m2==1&&m3==0) {
+                        strcpy(me2, "dez mil");
+                    }
+                    else if(m2==1&&m3==1) {
+                        strcpy(me2, "onze mil");
+                    }
+                    else if(m2==1&&m3==2) {
+                        strcpy(me2, "doze mil");
+                    }
+                    else if(m2==1&&m3==3) {
+                        strcpy(me2, "treze mil");
+                    }
+                    else if(m2==1&&m3==4) {
+                        strcpy(me2, "quatorze mil");
+                    }
+                    else if(m2==1&&m3==5) {
+                        strcpy(me2, "quinze mil");
+                    }
+                    else if(m2==1&&m3==6) {
+                        strcpy(me2, "dezesseis mil");
+                    }
+                    else if(m2==1&&m3==7) {
+                        strcpy(me2, "dezessete mil");
+                    }
+                    else if(m2==1&&m3==8) {
+                        strcpy(me2, "dezoito mil");
+                    }
+                    else if(m2==1&&m3==9) {
+                        strcpy(me2, "dezenove mil");
+                    }
+                    else if(m3==1) { //Para a casa m3
+                        strcpy(me3, "mil");
+                    }
+                    else if(m3==2) {
+                        strcpy(me3, "dois");
+                    }
+                    else if(m3==3) {
+                        strcpy(me3, "tres");
+                    }
+                    else if(m3==4) {
+                        strcpy(me3, "quatro");
+                    }
+                    else if(m3==5) {
+                        strcpy(me3, "cinco");
+                    }
+                    else if(m3==6) {
+                        strcpy(me3, "seis");
+                    }
+                    else if(m3==7) {
+                        strcpy(me3, "sete");
+                    }
+                    else if(m3==8) {
+                        strcpy(me3, "oito");
+                    }
+                    else if(m3==9) {
+                        strcpy(me3, "nove");
+                    }
+
+                    //Continuacao da casa m2
+                    if(m2==2) {
+                        strcpy(me2, "vinte");
+                    }
+                    else if(m2==3) {
+                        strcpy(me2, "trinta");
+                    }
+                    else if(m2==4) {
+                        strcpy(me2, "quarenta");
+                    }
+                    else if(m2==5) {
+                        strcpy(me2, "cinquenta");
+                    }
+                    else if(m2==6) {
+                        strcpy(me2, "sessenta");
+                    }
+                    else if(m2==7) {
+                        strcpy(me2, "setenta");
+                    }
+                    else if(m2==8) {
+                        strcpy(me2, "oitenta");
+                    }
+                    else if(m2==9) {
+                        strcpy(me2, "noventa");
+                    }
+
+                    //Para a casa de centena
+                    if(cent==1&&(dez>0||un>0)) {
+                        strcpy(cente, "cento e");
+                    }
+                    else if(cent==1) {
+                        strcpy(cente, "cem");
+                    }
+                    else if(cent==2){
+                        strcpy(cente, "duzentos");
+                    }
+                    else if(cent==3){
+                        strcpy(cente, "trezentos");
+                    }
+                    else if(cent==4){
+                        strcpy(cente, "quatrocentos");
+                    }
+                    else if(cent==5){
+                        strcpy(cente, "quinhentos");
+                    }
+                    else if(cent==6){
+                        strcpy(cente, "seiscentos");
+                    }
+                    else if(cent==7){
+                        strcpy(cente, "setecentos");
+                    }
+                    else if(cent==8){
+                        strcpy(cente, "oitocentos");
+                    }
+                    else if(cent==9){
+                        strcpy(cente, "novecentos");
+                    }
                     
 
 
