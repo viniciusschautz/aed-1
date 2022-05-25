@@ -17,9 +17,12 @@ Implementações feitas:
 
 TODO:
 
- * Validador de CPF
- * Escrever numeros por extenso
- * Checar se é possivel dar o valor (com as notas disponiveis)
+    *  ajustar numero por extenso
+    * checar erros
+    * checar verificador de cpf
+    * escolha de saída no saque
+    * inverter cxpf e saque
+    * tirar os 0 das notas fornecidas
 
 */
 
@@ -109,7 +112,7 @@ int main(){
                 //VALIDACAO
                 if((v_dig1!=dig_1)||(v_dig2!=dig_2)){
                     v_cpf = 1;
-                    printf("\nCPF invalido!\n\n");
+                    printf(" [ERRO!] CPF invalido!\n\n");
                     break;
                 }
 
