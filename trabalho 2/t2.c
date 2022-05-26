@@ -306,7 +306,7 @@ int main(){
                     }
                     // "Não se emprega a conjunção entre os milhares e as centenas, salvo quando o número terminar numa centena com dois zeros"
                     // Exemplo: 1800 = mil e oitocentos
-                    if((e1 != 0 || e2 != 0 || e3 != 0) && (e4 != 0 || e5 == 0 || e6 == 0))
+                    if((e1 != 0 || e2 != 0 || e3 != 0) && (e4 != 0 && ( e5 == 0 || e6 == 0)))
                         strcat(valExtenso, "mil e ");
                     else if(e1 != 0 || e2 != 0 || e3 != 0)
                         strcat(valExtenso, "mil ");
@@ -502,7 +502,7 @@ int main(){
                                 }
                                 // "Não se emprega a conjunção entre os milhares e as centenas, salvo quando o número terminar numa centena com dois zeros"
                                 // Exemplo: 1800 = mil e oitocentos
-                                if((e1 != 0 || e2 != 0 || e3 != 0) && (e4 != 0 || e5 == 0 || e6 == 0))
+                                if((e1 != 0 || e2 != 0 || e3 != 0) && (e4 != 0 && ( e5 == 0 || e6 == 0)))
                                     strcat(valExtenso, "mil e ");
                                 else if(e1 != 0 || e2 != 0 || e3 != 0)
                                     strcat(valExtenso, "mil ");
@@ -685,7 +685,7 @@ int main(){
                                 }
                                 // "Não se emprega a conjunção entre os milhares e as centenas, salvo quando o número terminar numa centena com dois zeros"
                                 // Exemplo: 1800 = mil e oitocentos
-                                if((e1 != 0 || e2 != 0 || e3 != 0) && (e4 != 0 || e5 == 0 || e6 == 0))
+                                if((e1 != 0 || e2 != 0 || e3 != 0) && (e4 != 0 && ( e5 == 0 || e6 == 0)))
                                     strcat(valExtenso, "mil e ");
                                 else if(e1 != 0 || e2 != 0 || e3 != 0)
                                     strcat(valExtenso, "mil ");
@@ -899,7 +899,7 @@ int main(){
                                             strcat(valExtenso, "nove ");
                                     }
 
-                                    if((e2 != 0 || e3 != 0) && (e4 != 0 || e5 == 0 || e6 == 0))
+                                    if((e2 != 0 || e3 != 0) && (e4 != 0 && ( e5 == 0 || e6 == 0)))
                                         strcat(valExtenso, "mil e ");
                                     else if(e2 != 0 || e3 != 0)
                                         strcat(valExtenso, "mil ");
