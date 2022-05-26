@@ -403,14 +403,31 @@ int main(){
 
                     printf("Saque realizado! A quantia de %s(%d) reais foi retirada!\n\n", valExtenso, saque);
                     printf("A retirada do dinheiro sera distribuida em:\n");
-                    if (saque450 > 0) printf("%d notas de 450\n", saque450);
-                    if (saque250 > 0) printf("%d notas de 250\n", saque250);
-                    if (saque50 > 0) printf("%d notas de 50\n", saque50);
-                    if (saque20 > 0) printf("%d notas de 20\n", saque20);
-                    if (saque10 > 0) printf("%d notas de 10\n", saque10);
-                    if (saque5 > 0) printf("%d notas de 5\n", saque5);
-                    if (saque2 > 0) printf("%d notas de 2\n", saque2);
-                    if (saque1 > 0) printf("%d notas de 1\n", saque1);
+                    if (saque450 == 1) printf("%d nota de 450 reais\n", saque450);
+                    else if (saque450 > 1) printf("%d notas de 450 reais\n", saque450);
+
+                    if (saque250 == 1) printf("%d nota de 250 reais\n", saque250);
+                    else if (saque250 > 1) printf("%d notas de 250 reais\n", saque250);
+
+                    if (saque50 == 1) printf("%d nota de 50 reais\n", saque50);
+                    else if (saque50 > 1) printf("%d notas de 50 reais\n", saque50);
+
+                    if (saque20 == 1) printf("%d nota de 20 reais\n", saque20);
+                    else if (saque20 > 1) printf("%d notas de 20 reais\n", saque20);
+
+                    if (saque10 == 1) printf("%d nota de 10 reais\n", saque10);
+                    else if (saque10 > 1) printf("%d notas de 10 reais\n", saque10);
+
+                    if (saque5 == 1) printf("%d nota de 5 reais\n", saque5);
+                    else if (saque5 > 1) printf("%d notas de 5 reais\n", saque5);
+
+                    if (saque2 == 1) printf("%d nota de 2 reais\n", saque2);
+                    else if (saque2 > 1) printf("%d notas de 2 reais\n", saque2);
+
+                    if (saque1 == 1) printf("%d nota de 1 real\n", saque1);
+                    else if (saque1 > 1) printf("%d notas de 1 real\n", saque1);
+
+                    printf("\n");
                     saldo -= saque; //o saldo PRECISA ser calculado aqui
                     totalSacado += saque;
                 }
