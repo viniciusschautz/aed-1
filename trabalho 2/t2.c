@@ -115,19 +115,31 @@ int main(){
                         v_dig2 = 0;
 
                     //VALIDACAO
-                    if(v_dig1==dig_1 && v_dig2 == dig_2) //cpf é válido
+                    if((v_dig1==dig_1 && v_dig2 == dig_2) && 
+                    !(cpf == 0 || 
+                    cpf == 11111111111 ||
+                    cpf == 22222222222 ||
+                    cpf == 33333333333 ||
+                    cpf == 44444444444 ||
+                    cpf == 55555555555 ||
+                    cpf == 66666666666 ||
+                    cpf == 77777777777 ||
+                    cpf == 88888888888 ||
+                    cpf == 99999999999
+                    )) //cpf é válido
                         break;
-                    
+                    system("cls");
+                    printf("\n [ERRO!] CPF invalido!\n\n");
+                    printf(" 1. Tentar novamente\n");
+                    printf(" 2. Voltar ao menu\n\n");
                     do { //se não for válido, executa essa linha
-                        printf(" [ERRO!] CPF invalido!\n\n");
-                        printf(" 1. Tentar novamente\n");
-                        printf(" 2. Voltar ao menu\n\n");
                         printf(" -> Sua escolha: ");
                         scanf("%d", &escolhaSaque);
                         if(escolhaSaque == 1)
                             break;
                         else if (escolhaSaque == 2)
                             break;
+                        else printf("Escolha uma opcao valida!\n\n");
                     } while (escolhaSaque != 1 && escolhaSaque != 2);
 
                     if (escolhaSaque == 2) break;
@@ -144,21 +156,23 @@ int main(){
 
                     if(saque > 0 && saque <= saldo) // é possivel executar
                         break;
-
+                    system("cls");
+                    printf("\n");
                     if(saque > saldo)  //impossivel sacar mais dinheiro do que a maquina tem
                         printf("[ERRO!] A maquina nao possui saldo suficiente!\n");
                     if (saque <= 0)
                         printf("[ERRO!] Impossivel sacar valores neutros ou negativos\n");
-
+                    
+                    printf(" 1. Tentar novamente\n");
+                    printf(" 2. Voltar ao menu\n\n");
                     do { //perguntar se deseja tentar novamente ou desistir
-                        printf(" 1. Tentar novamente\n");
-                        printf(" 2. Voltar ao menu\n\n");
                         printf(" -> Sua escolha: ");
                         scanf("%d", &escolhaSaque);
                         if(escolhaSaque == 1)
                             break;
                         else if (escolhaSaque == 2)
                             break;
+                        else printf("Escolha uma opcao valida!\n\n");
                     } while (escolhaSaque != 1 && escolhaSaque != 2);
 
                     if (escolhaSaque == 2) break;
@@ -344,25 +358,25 @@ int main(){
                            strcat(valExtenso, "e ");
 
                         if(e5 == 1 && e6 == 0) //onze, doze, etc
-                            strcat(valExtenso, "dez");
+                            strcat(valExtenso, "dez ");
                         else if(e5 == 1 && e6 == 1) 
-                            strcat(valExtenso, "onze");
+                            strcat(valExtenso, "onze ");
                         else if(e5 == 1 && e6 == 2) 
-                            strcat(valExtenso, "doze");
+                            strcat(valExtenso, "doze ");
                         else if(e5 == 1 && e6 == 3) 
-                            strcat(valExtenso, "treze"); 
+                            strcat(valExtenso, "treze "); 
                         else if(e5 == 1 && e6 == 4) 
-                            strcat(valExtenso, "quatorze"); 
+                            strcat(valExtenso, "quatorze "); 
                         else if(e5 == 1 && e6 == 5) 
-                            strcat(valExtenso, "quinze"); 
+                            strcat(valExtenso, "quinze "); 
                         else if(e5 == 1 && e6 == 6) 
-                            strcat(valExtenso, "dezesseis"); 
+                            strcat(valExtenso, "dezesseis "); 
                         else if(e5 == 1 && e6 == 7) 
-                            strcat(valExtenso, "dezessete"); 
+                            strcat(valExtenso, "dezessete "); 
                         else if(e5 == 1 && e6 == 8) 
-                            strcat(valExtenso, "dezoito"); 
+                            strcat(valExtenso, "dezoito "); 
                         else if(e5 == 1 && e6 == 9) 
-                            strcat(valExtenso, "dezenove"); 
+                            strcat(valExtenso, "dezenove "); 
                         else if (e5 == 2)
                             strcat(valExtenso, "vinte ");
                         else if (e5 == 3)
@@ -435,6 +449,7 @@ int main(){
                     else if (saque1 > 1) printf("%d cedulas de 1 real\n", saque1);
 
                     printf("\n");
+                    totalCedulas = cedulas450 + cedulas250 + cedulas50 + cedulas20 + cedulas10 + cedulas5 + cedulas2 + cedulas1;
                     saldo -= saque; //o saldo PRECISA ser calculado aqui
                     totalSacado += saque;
                 }
@@ -560,25 +575,25 @@ int main(){
                                     strcat(valExtenso, "e ");
 
                                     if(e5 == 1 && e6 == 0) //onze, doze, etc
-                                        strcat(valExtenso, "dez");
+                                        strcat(valExtenso, "dez ");
                                     else if(e5 == 1 && e6 == 1) 
-                                        strcat(valExtenso, "onze");
+                                        strcat(valExtenso, "onze ");
                                     else if(e5 == 1 && e6 == 2) 
-                                        strcat(valExtenso, "doze");
+                                        strcat(valExtenso, "doze ");
                                     else if(e5 == 1 && e6 == 3) 
-                                        strcat(valExtenso, "treze"); 
+                                        strcat(valExtenso, "treze "); 
                                     else if(e5 == 1 && e6 == 4) 
-                                        strcat(valExtenso, "quatorze"); 
+                                        strcat(valExtenso, "quatorze "); 
                                     else if(e5 == 1 && e6 == 5) 
-                                        strcat(valExtenso, "quinze"); 
+                                        strcat(valExtenso, "quinze "); 
                                     else if(e5 == 1 && e6 == 6) 
-                                        strcat(valExtenso, "dezesseis"); 
+                                        strcat(valExtenso, "dezesseis "); 
                                     else if(e5 == 1 && e6 == 7) 
-                                        strcat(valExtenso, "dezessete"); 
+                                        strcat(valExtenso, "dezessete" ); 
                                     else if(e5 == 1 && e6 == 8) 
-                                        strcat(valExtenso, "dezoito"); 
+                                        strcat(valExtenso, "dezoito "); 
                                     else if(e5 == 1 && e6 == 9) 
-                                        strcat(valExtenso, "dezenove"); 
+                                        strcat(valExtenso, "dezenove "); 
                                     else if (e5 == 2)
                                         strcat(valExtenso, "vinte ");
                                     else if (e5 == 3)
@@ -745,25 +760,25 @@ int main(){
                                     strcat(valExtenso, "e ");
 
                                     if(e5 == 1 && e6 == 0) //onze, doze, etc
-                                        strcat(valExtenso, "dez");
+                                        strcat(valExtenso, "dez ");
                                     else if(e5 == 1 && e6 == 1) 
-                                        strcat(valExtenso, "onze");
+                                        strcat(valExtenso, "onze ");
                                     else if(e5 == 1 && e6 == 2) 
-                                        strcat(valExtenso, "doze");
+                                        strcat(valExtenso, "doze ");
                                     else if(e5 == 1 && e6 == 3) 
-                                        strcat(valExtenso, "treze"); 
+                                        strcat(valExtenso, "treze "); 
                                     else if(e5 == 1 && e6 == 4) 
-                                        strcat(valExtenso, "quatorze"); 
+                                        strcat(valExtenso, "quatorze "); 
                                     else if(e5 == 1 && e6 == 5) 
-                                        strcat(valExtenso, "quinze"); 
+                                        strcat(valExtenso, "quinze "); 
                                     else if(e5 == 1 && e6 == 6) 
-                                        strcat(valExtenso, "dezesseis"); 
+                                        strcat(valExtenso, "dezesseis "); 
                                     else if(e5 == 1 && e6 == 7) 
-                                        strcat(valExtenso, "dezessete"); 
+                                        strcat(valExtenso, "dezessete "); 
                                     else if(e5 == 1 && e6 == 8) 
-                                        strcat(valExtenso, "dezoito"); 
+                                        strcat(valExtenso, "dezoito "); 
                                     else if(e5 == 1 && e6 == 9) 
-                                        strcat(valExtenso, "dezenove"); 
+                                        strcat(valExtenso, "dezenove "); 
                                     else if (e5 == 2)
                                         strcat(valExtenso, "vinte ");
                                     else if (e5 == 3)
@@ -960,25 +975,25 @@ int main(){
                                         strcat(valExtenso, "e ");
 
                                         if(e5 == 1 && e6 == 0)
-                                            strcat(valExtenso, "dez");
+                                            strcat(valExtenso, "dez ");
                                         else if(e5 == 1 && e6 == 1) 
-                                            strcat(valExtenso, "onze");
+                                            strcat(valExtenso, "onze ");
                                         else if(e5 == 1 && e6 == 2) 
-                                            strcat(valExtenso, "doze");
+                                            strcat(valExtenso, "doze ");
                                         else if(e5 == 1 && e6 == 3) 
-                                            strcat(valExtenso, "treze"); 
+                                            strcat(valExtenso, "treze "); 
                                         else if(e5 == 1 && e6 == 4) 
-                                            strcat(valExtenso, "quatorze"); 
+                                            strcat(valExtenso, "quatorze "); 
                                         else if(e5 == 1 && e6 == 5) 
-                                            strcat(valExtenso, "quinze"); 
+                                            strcat(valExtenso, "quinze "); 
                                         else if(e5 == 1 && e6 == 6) 
-                                            strcat(valExtenso, "dezesseis"); 
+                                            strcat(valExtenso, "dezesseis "); 
                                         else if(e5 == 1 && e6 == 7) 
-                                            strcat(valExtenso, "dezessete"); 
+                                            strcat(valExtenso, "dezessete "); 
                                         else if(e5 == 1 && e6 == 8) 
-                                            strcat(valExtenso, "dezoito"); 
+                                            strcat(valExtenso, "dezoito "); 
                                         else if(e5 == 1 && e6 == 9) 
-                                            strcat(valExtenso, "dezenove"); 
+                                            strcat(valExtenso, "dezenove "); 
                                         else if (e5 == 2)
                                             strcat(valExtenso, "vinte ");
                                         else if (e5 == 3)
@@ -1150,8 +1165,9 @@ int main(){
                                         printf(" [ERRO!] Escolha uma opcao valida!\n");
                                 }
                                 printf("\nCedulas adicionadas!\n");
+                                //atualizar valores depois do abastecimento
+                                totalCedulas = cedulas450 + cedulas250 + cedulas50 + cedulas20 + cedulas10 + cedulas5 + cedulas2 + cedulas1;
                                 saldo = cedulas450 * 450 + cedulas250 * 250 + cedulas50 * 50 + cedulas20 * 20 + cedulas10 * 10 + cedulas5 * 5 + cedulas2 * 2 + cedulas1;
-                                //atualizar o saldo depois do abastecimento
                                 if(escolhaCedulas != 0)
                                     system("pause");
                             } while (escolhaCedulas != 0);
