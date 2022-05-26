@@ -405,9 +405,9 @@ int main(){
                     }
 
                     strcpy(flexaoReal, "real");
-                            if(totalSacado > 1) //plural e singular
-                    strcpy(flexaoReal, "reais");
-                    //se for 1 real vai printar 1 real ao invés de 1 reais.
+                    if(saque > 1) //plural e singular
+                        strcpy(flexaoReal, "reais");
+                    //se for 1 real vai printar 1 real ao invés de 1 reais. gramática é importante
                     printf("Saque realizado! A quantia de %s(%d) %s foi retirada!\n\n", valExtenso, saque, flexaoReal);
                     printf("A retirada do dinheiro sera distribuida em:\n");
                     if (saque450 == 1) printf("%d cedula de 450 reais\n", saque450);
@@ -1149,6 +1149,7 @@ int main(){
                                     default:
                                         printf(" [ERRO!] Escolha uma opcao valida!\n");
                                 }
+                                printf("\nCedulas adicionadas!\n");
                                 saldo = cedulas450 * 450 + cedulas250 * 250 + cedulas50 * 50 + cedulas20 * 20 + cedulas10 * 10 + cedulas5 * 5 + cedulas2 * 2 + cedulas1;
                                 //atualizar o saldo depois do abastecimento
                                 if(escolhaCedulas != 0)
