@@ -37,6 +37,10 @@ int main(){
     char e1, e2, e3, e4, e5, e6;
     char valExtenso[80];
 
+    //para ajudar no printf (cedula/cedulas) e (real/reais)
+    char flexaoCedula[8];
+    char flexaoReal[7];
+
     //total sacado
     int totalSacado = 0; //o valor é acumulativo
 
@@ -255,7 +259,7 @@ int main(){
                         else if(e2 == 1 && e3 == 4) 
                             strcat(valExtenso, "quatorze "); 
                         else if(e2 == 1 && e3 == 5) 
-                            strcat(valExtenso, "quize "); 
+                            strcat(valExtenso, "quinze "); 
                         else if(e2 == 1 && e3 == 6) 
                             strcat(valExtenso, "dezesseis "); 
                         else if(e2 == 1 && e3 == 7) 
@@ -350,7 +354,7 @@ int main(){
                         else if(e5 == 1 && e6 == 4) 
                             strcat(valExtenso, "quatorze"); 
                         else if(e5 == 1 && e6 == 5) 
-                            strcat(valExtenso, "quize"); 
+                            strcat(valExtenso, "quinze"); 
                         else if(e5 == 1 && e6 == 6) 
                             strcat(valExtenso, "dezesseis"); 
                         else if(e5 == 1 && e6 == 7) 
@@ -400,32 +404,35 @@ int main(){
                             strcat(valExtenso, "nove ");  
                     }
 
-
-                    printf("Saque realizado! A quantia de %s(%d) reais foi retirada!\n\n", valExtenso, saque);
+                    strcpy(flexaoReal, "real");
+                            if(totalSacado > 1) //plural e singular
+                    strcpy(flexaoReal, "reais");
+                    //se for 1 real vai printar 1 real ao invés de 1 reais.
+                    printf("Saque realizado! A quantia de %s(%d) %s foi retirada!\n\n", valExtenso, saque, flexaoReal);
                     printf("A retirada do dinheiro sera distribuida em:\n");
-                    if (saque450 == 1) printf("%d nota de 450 reais\n", saque450);
-                    else if (saque450 > 1) printf("%d notas de 450 reais\n", saque450);
+                    if (saque450 == 1) printf("%d cedula de 450 reais\n", saque450);
+                    else if (saque450 > 1) printf("%d cedulas de 450 reais\n", saque450);
 
-                    if (saque250 == 1) printf("%d nota de 250 reais\n", saque250);
-                    else if (saque250 > 1) printf("%d notas de 250 reais\n", saque250);
+                    if (saque250 == 1) printf("%d cedula de 250 reais\n", saque250);
+                    else if (saque250 > 1) printf("%d cedulas de 250 reais\n", saque250);
 
-                    if (saque50 == 1) printf("%d nota de 50 reais\n", saque50);
-                    else if (saque50 > 1) printf("%d notas de 50 reais\n", saque50);
+                    if (saque50 == 1) printf("%d cedula de 50 reais\n", saque50);
+                    else if (saque50 > 1) printf("%d cedulas de 50 reais\n", saque50);
 
-                    if (saque20 == 1) printf("%d nota de 20 reais\n", saque20);
-                    else if (saque20 > 1) printf("%d notas de 20 reais\n", saque20);
+                    if (saque20 == 1) printf("%d cedula de 20 reais\n", saque20);
+                    else if (saque20 > 1) printf("%d cedulas de 20 reais\n", saque20);
 
-                    if (saque10 == 1) printf("%d nota de 10 reais\n", saque10);
-                    else if (saque10 > 1) printf("%d notas de 10 reais\n", saque10);
+                    if (saque10 == 1) printf("%d cedula de 10 reais\n", saque10);
+                    else if (saque10 > 1) printf("%d cedulas de 10 reais\n", saque10);
 
-                    if (saque5 == 1) printf("%d nota de 5 reais\n", saque5);
-                    else if (saque5 > 1) printf("%d notas de 5 reais\n", saque5);
+                    if (saque5 == 1) printf("%d cedula de 5 reais\n", saque5);
+                    else if (saque5 > 1) printf("%d cedulas de 5 reais\n", saque5);
 
-                    if (saque2 == 1) printf("%d nota de 2 reais\n", saque2);
-                    else if (saque2 > 1) printf("%d notas de 2 reais\n", saque2);
+                    if (saque2 == 1) printf("%d cedula de 2 reais\n", saque2);
+                    else if (saque2 > 1) printf("%d cedulas de 2 reais\n", saque2);
 
-                    if (saque1 == 1) printf("%d nota de 1 real\n", saque1);
-                    else if (saque1 > 1) printf("%d notas de 1 real\n", saque1);
+                    if (saque1 == 1) printf("%d cedula de 1 real\n", saque1);
+                    else if (saque1 > 1) printf("%d cedulas de 1 real\n", saque1);
 
                     printf("\n");
                     saldo -= saque; //o saldo PRECISA ser calculado aqui
@@ -468,7 +475,7 @@ int main(){
                                     else if(e2 == 1 && e3 == 4) 
                                         strcat(valExtenso, "quatorze "); 
                                     else if(e2 == 1 && e3 == 5) 
-                                        strcat(valExtenso, "quize "); 
+                                        strcat(valExtenso, "quinze "); 
                                     else if(e2 == 1 && e3 == 6) 
                                         strcat(valExtenso, "dezesseis "); 
                                     else if(e2 == 1 && e3 == 7) 
@@ -563,7 +570,7 @@ int main(){
                                     else if(e5 == 1 && e6 == 4) 
                                         strcat(valExtenso, "quatorze"); 
                                     else if(e5 == 1 && e6 == 5) 
-                                        strcat(valExtenso, "quize"); 
+                                        strcat(valExtenso, "quinze"); 
                                     else if(e5 == 1 && e6 == 6) 
                                         strcat(valExtenso, "dezesseis"); 
                                     else if(e5 == 1 && e6 == 7) 
@@ -613,8 +620,10 @@ int main(){
                                         strcat(valExtenso, "nove ");  
                                 }
                             }
-
-                            printf(" -> O valor total sacado nesse caixa eletronico foi de %s(%d) reais\n\n", valExtenso, totalSacado);
+                            strcpy(flexaoReal, "real");
+                            if(totalSacado > 1) //plural e singular
+                                strcpy(flexaoReal, "reais");
+                                printf(" -> O valor total sacado nesse caixa eletronico foi de %s(%d) %s\n\n", valExtenso, totalSacado, flexaoReal);
                         break;
 
 
@@ -651,7 +660,7 @@ int main(){
                                     else if(e2 == 1 && e3 == 4) 
                                         strcat(valExtenso, "quatorze "); 
                                     else if(e2 == 1 && e3 == 5) 
-                                        strcat(valExtenso, "quize "); 
+                                        strcat(valExtenso, "quinze "); 
                                     else if(e2 == 1 && e3 == 6) 
                                         strcat(valExtenso, "dezesseis "); 
                                     else if(e2 == 1 && e3 == 7) 
@@ -746,7 +755,7 @@ int main(){
                                     else if(e5 == 1 && e6 == 4) 
                                         strcat(valExtenso, "quatorze"); 
                                     else if(e5 == 1 && e6 == 5) 
-                                        strcat(valExtenso, "quize"); 
+                                        strcat(valExtenso, "quinze"); 
                                     else if(e5 == 1 && e6 == 6) 
                                         strcat(valExtenso, "dezesseis"); 
                                     else if(e5 == 1 && e6 == 7) 
@@ -796,7 +805,9 @@ int main(){
                                         strcat(valExtenso, "nove ");  
                                 }
                             }
-                            printf(" -> Saldo existente: %s(%d)\n\n", valExtenso, saldo);
+                            strcpy(flexaoReal, "reais");
+                            if(saldo == 1) strcpy(flexaoReal, "real") ;
+                            printf(" -> Saldo existente: %s(%d) %s\n\n", valExtenso, saldo, flexaoReal);
                         break;
 
 
@@ -866,7 +877,7 @@ int main(){
                                         else if(e2 == 1 && e3 == 4) 
                                             strcat(valExtenso, "quatorze "); 
                                         else if(e2 == 1 && e3 == 5) 
-                                            strcat(valExtenso, "quize "); 
+                                            strcat(valExtenso, "quinze "); 
                                         else if(e2 == 1 && e3 == 6) 
                                             strcat(valExtenso, "dezesseis "); 
                                         else if(e2 == 1 && e3 == 7) 
@@ -897,9 +908,9 @@ int main(){
                                             strcat(valExtenso, "e ");
 
                                         if(e3 == 1 && e2 != 0)
-                                            strcat(valExtenso, "um ");
+                                            strcat(valExtenso, "uma ");
                                         else if(e3 == 2) 
-                                            strcat(valExtenso, "dois ");
+                                            strcat(valExtenso, "duas ");
                                         else if(e3 == 3) 
                                             strcat(valExtenso, "tres "); 
                                         else if(e3 == 4) 
@@ -927,21 +938,21 @@ int main(){
                                         else if(e4 == 1)
                                             strcat(valExtenso, "cento ");
                                         else if(e4 == 2)
-                                            strcat(valExtenso, "duzentos ");  
+                                            strcat(valExtenso, "duzentas ");  
                                         else if(e4 == 3)
-                                            strcat(valExtenso, "trezentos ");  
+                                            strcat(valExtenso, "trezentas ");  
                                         else if(e4 == 4)
-                                            strcat(valExtenso, "quatrocentos ");  
+                                            strcat(valExtenso, "quatrocentas ");  
                                         else if(e4 == 5)
-                                            strcat(valExtenso, "quinhentos ");  
+                                            strcat(valExtenso, "quinhentas ");  
                                         else if(e4 == 6)
-                                            strcat(valExtenso, "seiscentos ");  
+                                            strcat(valExtenso, "seiscentas ");  
                                         else if(e4 == 7)
-                                            strcat(valExtenso, "setecentos ");
+                                            strcat(valExtenso, "setecentas ");
                                         else if(e4 == 8)
-                                            strcat(valExtenso, "oitocentos ");
+                                            strcat(valExtenso, "oitocentas ");
                                         else if(e4 == 9)
-                                            strcat(valExtenso, "novecentos ");       
+                                            strcat(valExtenso, "novecentas ");       
                                     }
 
                                     if(e5 != 0) {
@@ -959,7 +970,7 @@ int main(){
                                         else if(e5 == 1 && e6 == 4) 
                                             strcat(valExtenso, "quatorze"); 
                                         else if(e5 == 1 && e6 == 5) 
-                                            strcat(valExtenso, "quize"); 
+                                            strcat(valExtenso, "quinze"); 
                                         else if(e5 == 1 && e6 == 6) 
                                             strcat(valExtenso, "dezesseis"); 
                                         else if(e5 == 1 && e6 == 7) 
@@ -990,9 +1001,9 @@ int main(){
                                             strcat(valExtenso, "e ");
 
                                         if(e6 == 1) 
-                                            strcat(valExtenso, "um ");
+                                            strcat(valExtenso, "uma ");
                                         else if(e6 == 2) 
-                                            strcat(valExtenso, "dois ");
+                                            strcat(valExtenso, "duas ");
                                         else if(e6 == 3) 
                                             strcat(valExtenso, "tres "); 
                                         else if(e6 == 4) 
@@ -1009,12 +1020,16 @@ int main(){
                                             strcat(valExtenso, "nove ");  
                                     }
                                 }
-                                if(i < 7)
-                                    printf("Quantidade de notas de %d reais: %s(%d)\n", localizador, valExtenso, checadorCedulas);
-                                else if(i == 7) //1 real (no singular)
-                                    printf("Quantidade de notas de %d real: %s(%d)\n", localizador, valExtenso, checadorCedulas);
+                                strcpy(flexaoReal, "real");
+                                strcpy(flexaoCedula, "cedula");
+                                if(localizador != 1) strcpy(flexaoReal, "reais");
+                                if (checadorCedulas != 1) strcpy(flexaoCedula, "cedulas");
+
+                                if(i <= 7)
+                                    printf("%d: a maquina possui %s(%d) %s de %d %s\n", localizador, valExtenso, checadorCedulas, flexaoCedula, localizador, flexaoReal);
+    
                                 else 
-                                    printf("\nQuantidade total de notas na maquina: %s(%d)\n\n", valExtenso, checadorCedulas);
+                                    printf("\nQuantidade total de %s na maquina: %s(%d)\n\n", flexaoCedula, valExtenso, checadorCedulas);
                             
                             }
                         break;
