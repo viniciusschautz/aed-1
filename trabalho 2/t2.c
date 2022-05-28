@@ -3,26 +3,6 @@
 #include <math.h>
 #include <string.h>
 
-/* 
-Implementações feitas:
-
- * Contador de cedulas
- * Menus
- * Revarga de Cedulas (com checagem para 0 e numeros negativos) (limite de cedulas)
- * Total sacado e saldo existente
- * Checagem de saque (se o saldo < saque avisar o usuario)
- * Contagem de cedulas
- * Caso for impossivel dar o valor com as notas atuais, exibe mensagem de erro e não é descontado do saldo nem entregue nota alguma
- * Identificadores de SAIDA e ERRO
-
-TODO:
-
-    * checar erros
-    * checar verificador de cpf
-    * tirar os 0 das notas fornecidas
-
-*/
-
 
 int main(){
     int escolha, escolhaGerente, escolhaCedulas, qntCedulas; //escolhas
@@ -643,7 +623,6 @@ int main(){
 
 
 
-
                         case 2: //Valor do saldo existente
                             //não se calcula o saldo aqui, já que o saldo só atualizaria quando se escolhesse essa opção
                             system("cls");
@@ -826,9 +805,7 @@ int main(){
                         break;
 
 
-
-
-                        
+         
                         case 3: //quantidade de cedulas existentes
                             system("cls");
                             printf("\n -> Sua escolha:\n (3). Quantidade de cedulas existentes\n\n");
@@ -1048,6 +1025,9 @@ int main(){
                             
                             }
                         break;
+
+
+
                         case 4: //Abastecer caixa eletronico
                             do {
                                 system("cls");
@@ -1172,6 +1152,9 @@ int main(){
                                     system("pause");
                             } while (escolhaCedulas != 0);
                         break;
+
+
+                        
                         case 5: //sair
                             printf("Voltando ao menu principal...\n\n");
                         break;
